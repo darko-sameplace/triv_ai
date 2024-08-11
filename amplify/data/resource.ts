@@ -14,14 +14,16 @@ const schema = a.schema({
     })
     .authorization([a.allow.owner()]),
 
-  Result: a.model({
-    score: a.float().required(),
-    correctAnswerCount: a.integer().required(),
-    answers: a.string().array().required(),
-    questions: a.hasMany("Question"),
-    createdAt: a.datetime(),
-    updatedAt: a.datetime(),
-  }).authorization([a.allow.owner()]),
+  Result: a
+    .model({
+      score: a.float().required(),
+      correctAnswerCount: a.integer().required(),
+      answers: a.string().array().required(),
+      questions: a.hasMany("Question"),
+      createdAt: a.datetime(),
+      updatedAt: a.datetime(),
+  })
+  .authorization([a.allow.owner()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

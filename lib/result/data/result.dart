@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:triv_ai/question/data/question.dart';
+import 'package:triv_ai/models/Question.dart';
 
 class Result extends Equatable {
   const Result({
