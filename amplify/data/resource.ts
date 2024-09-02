@@ -10,20 +10,21 @@ const schema = a.schema({
       options: a.string().array().required(),
       createdAt: a.datetime(),
       updatedAt: a.datetime(),
-      result: a.belongsTo("Result"),
+      resultId: a.id(),
+      result: a.belongsTo("Result", "resultId"),
     })
-    .authorization([a.allow.owner()]),
+    .authorization((allow) => [allow.owner()]),
 
   Result: a
     .model({
       score: a.float().required(),
       correctAnswerCount: a.integer().required(),
       answers: a.string().array().required(),
-      questions: a.hasMany("Question"),
+      questions: a.hasMany("Question", "resultId"),
       createdAt: a.datetime(),
       updatedAt: a.datetime(),
     })
-    .authorization([a.allow.owner()]),
+    .authorization((allow) => [allow.owner()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

@@ -19,8 +19,8 @@
     "aws-amplify": "^6.5.3"
   },
   "devDependencies": {
-    "@aws-amplify/backend": "^0.10.3",
-    "@aws-amplify/backend-cli": "^0.9.7",
+    "@aws-amplify/backend": "^1.2.0",
+    "@aws-amplify/backend-cli": "^1.2.5",
     "aws-cdk": "^2.155.0",
     "aws-cdk-lib": "^2.155.0",
     "constructs": "^10.3.0",
