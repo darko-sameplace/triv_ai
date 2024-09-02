@@ -148,7 +148,7 @@ class QuizCubit extends Cubit<QuizState> {
         for (final question in currentState.questions) {
           final questionMutation = ModelMutations.create(
             question.copyWith(
-              resultQuestionsId: result.id,
+              result: result,
               updatedAt: TemporalDateTime(DateTime.now()),
             ),
           );
