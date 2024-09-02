@@ -6,7 +6,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:triv_ai/amplifyconfiguration.dart';
+import 'package:triv_ai/amplify_outputs.dart';
 import 'package:triv_ai/models/ModelProvider.dart';
 import 'package:triv_ai/quiz/data/quiz_cubit.dart';
 import 'package:triv_ai/result/data/results_cubit.dart';
