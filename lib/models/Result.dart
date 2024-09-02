@@ -17,7 +17,7 @@
 // Generated files can be excluded from analysis in analysis_options.yaml
 // For more info, see: https://dart.dev/guides/language/analysis-options#excluding-code-from-analysis
 
-// ignore_for_file: public_member_api_docs, annotate_overrides, dead_code, dead_codepublic_member_api_docs, depend_on_referenced_packages, file_names, library_private_types_in_public_api, no_leading_underscores_for_library_prefixes, no_leading_underscores_for_local_identifiers, non_constant_identifier_names, null_check_on_nullable_type_parameter, prefer_adjacent_string_concatenation, prefer_const_constructors, prefer_if_null_operators, prefer_interpolation_to_compose_strings, slash_for_doc_comments, sort_child_properties_last, unnecessary_const, unnecessary_constructor_name, unnecessary_late, unnecessary_new, unnecessary_null_aware_assignments, unnecessary_nullable_for_final_variable_declarations, unnecessary_string_interpolations, use_build_context_synchronously
+// ignore_for_file: public_member_api_docs, annotate_overrides, dead_code, dead_codepublic_member_api_docs, depend_on_referenced_packages, file_names, library_private_types_in_public_api, no_leading_underscores_for_library_prefixes, no_leading_underscores_for_local_identifiers, non_constant_identifier_names, null_check_on_nullable_type_parameter, override_on_non_overriding_member, prefer_adjacent_string_concatenation, prefer_const_constructors, prefer_if_null_operators, prefer_interpolation_to_compose_strings, slash_for_doc_comments, sort_child_properties_last, unnecessary_const, unnecessary_constructor_name, unnecessary_late, unnecessary_new, unnecessary_null_aware_assignments, unnecessary_nullable_for_final_variable_declarations, unnecessary_string_interpolations, use_build_context_synchronously
 
 import 'ModelProvider.dart';
 import 'package:amplify_core/amplify_core.dart' as amplify_core;
@@ -34,7 +34,6 @@ class Result extends amplify_core.Model {
   final List<Question>? _questions;
   final amplify_core.TemporalDateTime? _createdAt;
   final amplify_core.TemporalDateTime? _updatedAt;
-  final String? _owner;
 
   @override
   getInstanceType() => classType;
@@ -100,13 +99,9 @@ class Result extends amplify_core.Model {
     return _updatedAt;
   }
   
-  String? get owner {
-    return _owner;
-  }
+  const Result._internal({required this.id, required score, required correctAnswerCount, required answers, questions, createdAt, updatedAt}): _score = score, _correctAnswerCount = correctAnswerCount, _answers = answers, _questions = questions, _createdAt = createdAt, _updatedAt = updatedAt;
   
-  const Result._internal({required this.id, required score, required correctAnswerCount, required answers, questions, createdAt, updatedAt, owner}): _score = score, _correctAnswerCount = correctAnswerCount, _answers = answers, _questions = questions, _createdAt = createdAt, _updatedAt = updatedAt, _owner = owner;
-  
-  factory Result({String? id, required double score, required int correctAnswerCount, required List<String> answers, List<Question>? questions, amplify_core.TemporalDateTime? createdAt, amplify_core.TemporalDateTime? updatedAt, String? owner}) {
+  factory Result({String? id, required double score, required int correctAnswerCount, required List<String> answers, List<Question>? questions, amplify_core.TemporalDateTime? createdAt, amplify_core.TemporalDateTime? updatedAt}) {
     return Result._internal(
       id: id == null ? amplify_core.UUID.getUUID() : id,
       score: score,
@@ -114,8 +109,7 @@ class Result extends amplify_core.Model {
       answers: answers != null ? List<String>.unmodifiable(answers) : answers,
       questions: questions != null ? List<Question>.unmodifiable(questions) : questions,
       createdAt: createdAt,
-      updatedAt: updatedAt,
-      owner: owner);
+      updatedAt: updatedAt);
   }
   
   bool equals(Object other) {
@@ -132,8 +126,7 @@ class Result extends amplify_core.Model {
       DeepCollectionEquality().equals(_answers, other._answers) &&
       DeepCollectionEquality().equals(_questions, other._questions) &&
       _createdAt == other._createdAt &&
-      _updatedAt == other._updatedAt &&
-      _owner == other._owner;
+      _updatedAt == other._updatedAt;
   }
   
   @override
@@ -149,14 +142,13 @@ class Result extends amplify_core.Model {
     buffer.write("correctAnswerCount=" + (_correctAnswerCount != null ? _correctAnswerCount!.toString() : "null") + ", ");
     buffer.write("answers=" + (_answers != null ? _answers!.toString() : "null") + ", ");
     buffer.write("createdAt=" + (_createdAt != null ? _createdAt!.format() : "null") + ", ");
-    buffer.write("updatedAt=" + (_updatedAt != null ? _updatedAt!.format() : "null") + ", ");
-    buffer.write("owner=" + "$_owner");
+    buffer.write("updatedAt=" + (_updatedAt != null ? _updatedAt!.format() : "null"));
     buffer.write("}");
     
     return buffer.toString();
   }
   
-  Result copyWith({double? score, int? correctAnswerCount, List<String>? answers, List<Question>? questions, amplify_core.TemporalDateTime? createdAt, amplify_core.TemporalDateTime? updatedAt, String? owner}) {
+  Result copyWith({double? score, int? correctAnswerCount, List<String>? answers, List<Question>? questions, amplify_core.TemporalDateTime? createdAt, amplify_core.TemporalDateTime? updatedAt}) {
     return Result._internal(
       id: id,
       score: score ?? this.score,
@@ -164,8 +156,7 @@ class Result extends amplify_core.Model {
       answers: answers ?? this.answers,
       questions: questions ?? this.questions,
       createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
-      owner: owner ?? this.owner);
+      updatedAt: updatedAt ?? this.updatedAt);
   }
   
   Result copyWithModelFieldValues({
@@ -174,8 +165,7 @@ class Result extends amplify_core.Model {
     ModelFieldValue<List<String>?>? answers,
     ModelFieldValue<List<Question>?>? questions,
     ModelFieldValue<amplify_core.TemporalDateTime?>? createdAt,
-    ModelFieldValue<amplify_core.TemporalDateTime?>? updatedAt,
-    ModelFieldValue<String?>? owner
+    ModelFieldValue<amplify_core.TemporalDateTime?>? updatedAt
   }) {
     return Result._internal(
       id: id,
@@ -184,8 +174,7 @@ class Result extends amplify_core.Model {
       answers: answers == null ? this.answers : answers.value,
       questions: questions == null ? this.questions : questions.value,
       createdAt: createdAt == null ? this.createdAt : createdAt.value,
-      updatedAt: updatedAt == null ? this.updatedAt : updatedAt.value,
-      owner: owner == null ? this.owner : owner.value
+      updatedAt: updatedAt == null ? this.updatedAt : updatedAt.value
     );
   }
   
@@ -194,18 +183,24 @@ class Result extends amplify_core.Model {
       _score = (json['score'] as num?)?.toDouble(),
       _correctAnswerCount = (json['correctAnswerCount'] as num?)?.toInt(),
       _answers = json['answers']?.cast<String>(),
-      _questions = json['questions'] is List
-        ? (json['questions'] as List)
-          .where((e) => e?['serializedData'] != null)
-          .map((e) => Question.fromJson(new Map<String, dynamic>.from(e['serializedData'])))
-          .toList()
-        : null,
+      _questions = json['questions']  is Map
+        ? (json['questions']['items'] is List
+          ? (json['questions']['items'] as List)
+              .where((e) => e != null)
+              .map((e) => Question.fromJson(new Map<String, dynamic>.from(e)))
+              .toList()
+          : null)
+        : (json['questions'] is List
+          ? (json['questions'] as List)
+              .where((e) => e?['serializedData'] != null)
+              .map((e) => Question.fromJson(new Map<String, dynamic>.from(e?['serializedData'])))
+              .toList()
+          : null),
       _createdAt = json['createdAt'] != null ? amplify_core.TemporalDateTime.fromString(json['createdAt']) : null,
-      _updatedAt = json['updatedAt'] != null ? amplify_core.TemporalDateTime.fromString(json['updatedAt']) : null,
-      _owner = json['owner'];
+      _updatedAt = json['updatedAt'] != null ? amplify_core.TemporalDateTime.fromString(json['updatedAt']) : null;
   
   Map<String, dynamic> toJson() => {
-    'id': id, 'score': _score, 'correctAnswerCount': _correctAnswerCount, 'answers': _answers, 'questions': _questions?.map((Question? e) => e?.toJson()).toList(), 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format(), 'owner': _owner
+    'id': id, 'score': _score, 'correctAnswerCount': _correctAnswerCount, 'answers': _answers, 'questions': _questions?.map((Question? e) => e?.toJson()).toList(), 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
   };
   
   Map<String, Object?> toMap() => {
@@ -215,8 +210,7 @@ class Result extends amplify_core.Model {
     'answers': _answers,
     'questions': _questions,
     'createdAt': _createdAt,
-    'updatedAt': _updatedAt,
-    'owner': _owner
+    'updatedAt': _updatedAt
   };
 
   static final amplify_core.QueryModelIdentifier<ResultModelIdentifier> MODEL_IDENTIFIER = amplify_core.QueryModelIdentifier<ResultModelIdentifier>();
@@ -229,7 +223,6 @@ class Result extends amplify_core.Model {
     fieldType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.model, ofModelName: 'Question'));
   static final CREATEDAT = amplify_core.QueryField(fieldName: "createdAt");
   static final UPDATEDAT = amplify_core.QueryField(fieldName: "updatedAt");
-  static final OWNER = amplify_core.QueryField(fieldName: "owner");
   static var schema = amplify_core.Model.defineSchema(define: (amplify_core.ModelSchemaDefinition modelSchemaDefinition) {
     modelSchemaDefinition.name = "Result";
     modelSchemaDefinition.pluralName = "Results";
@@ -246,10 +239,6 @@ class Result extends amplify_core.Model {
           amplify_core.ModelOperation.DELETE,
           amplify_core.ModelOperation.READ
         ])
-    ];
-    
-    modelSchemaDefinition.indexes = [
-      amplify_core.ModelIndex(fields: const ["id"], name: null)
     ];
     
     modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.id());
@@ -277,7 +266,7 @@ class Result extends amplify_core.Model {
       key: Result.QUESTIONS,
       isRequired: false,
       ofModelName: 'Question',
-      associatedKey: Question.RESULTQUESTIONSID
+      associatedKey: Question.RESULT
     ));
     
     modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
@@ -290,12 +279,6 @@ class Result extends amplify_core.Model {
       key: Result.UPDATEDAT,
       isRequired: false,
       ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.dateTime)
-    ));
-    
-    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
-      key: Result.OWNER,
-      isRequired: false,
-      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
   });
 }
