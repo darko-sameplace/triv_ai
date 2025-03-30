@@ -1,4 +1,5 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
+import  type awsRegions from 'aws-regions';
 
 const schema = a.schema({
   Question: a
